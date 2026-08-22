@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "unityMCP": {
+      "type": "stdio",
+      "command": "C:\\Users\\Gal\\.local\\mcp-for-unity\\Scripts\\mcp-for-unity.exe",
+      "args": [
+        "--transport",
+        "stdio"
+      ]
+    }
+  }
+}

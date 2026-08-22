@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd30939f43e6e6040aaad1df7602e0d5, type: 3}
+  m_Name: PlayerMovementSettings
+  m_EditorClassIdentifier: Assembly-CSharp::SkySteps.Player.PlayerMovementSettings
+  maxSpeed: 8
+  groundAcceleration: 90
+  airAcceleration: 45
+  groundFriction: 70
+  airFriction: 12
+  jumpHeight: 3.2
+  maxFallSpeed: 22
+  fallGravityMultiplier: 1.9
+  lowJumpGravityMultiplier: 2.6
+  coyoteTime: 0.1
+  jumpBufferTime: 0.12
+  dropThroughDuration: 0.35
+  dropThroughImpulse: 3
