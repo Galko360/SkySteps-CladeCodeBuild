@@ -23,10 +23,15 @@ namespace SkySteps.Player
         [Tooltip("Minimum surface alignment for a hit to count. 0.5 accepts slopes up to roughly 60 degrees.")]
         [SerializeField, Range(0.1f, 1f)] private float minSurfaceAlignment = 0.5f;
 
+        [Tooltip("Fastest the player may move away from a floor and still count as standing on it. " +
+                 "Stops a jump being refunded as the player rises past a platform's top edge.")]
+        [SerializeField, Min(0f)] private float maxSeparationSpeed = 0.1f;
+
         // Reused across every cast so contact probing never allocates.
         private readonly RaycastHit2D[] _hits = new RaycastHit2D[MaxHitsPerProbe];
         private ContactFilter2D _filter;
         private Collider2D _collider;
+        private Rigidbody2D _body;
 
         public bool IsGrounded { get; private set; }
         public bool IsTouchingCeiling { get; private set; }
@@ -40,6 +45,7 @@ namespace SkySteps.Player
         private void Awake()
         {
             _collider = GetComponent<Collider2D>();
+            _body = _collider.attachedRigidbody;
             _filter = new ContactFilter2D { useTriggers = false };
             _filter.SetLayerMask(solidLayers);
         }
@@ -49,19 +55,17 @@ namespace SkySteps.Player
         /// </summary>
         public void Probe()
         {
-            IsGrounded = TryCast(Vector2.down, skipOneWaySurfaces: false, out RaycastHit2D groundHit);
+            IsGrounded = TryCast(Vector2.down, isGroundProbe: true, out RaycastHit2D groundHit);
             GroundCollider = IsGrounded ? groundHit.collider : null;
 
-            // One-way platforms are skipped overhead and sideways: the solver lets the player pass
-            // through them, so treating them as ceiling or wall would cancel motion that succeeds.
-            IsTouchingCeiling = TryCast(Vector2.up, skipOneWaySurfaces: true, out _);
+            IsTouchingCeiling = TryCast(Vector2.up, isGroundProbe: false, out _);
 
-            if (TryCast(Vector2.right, skipOneWaySurfaces: true, out _)) WallDirection = 1;
-            else if (TryCast(Vector2.left, skipOneWaySurfaces: true, out _)) WallDirection = -1;
+            if (TryCast(Vector2.right, isGroundProbe: false, out _)) WallDirection = 1;
+            else if (TryCast(Vector2.left, isGroundProbe: false, out _)) WallDirection = -1;
             else WallDirection = 0;
         }
 
-        private bool TryCast(Vector2 direction, bool skipOneWaySurfaces, out RaycastHit2D result)
+        private bool TryCast(Vector2 direction, bool isGroundProbe, out RaycastHit2D result)
         {
             int count = _collider.Cast(direction, _filter, _hits, skinWidth);
             Vector2 expectedNormal = -direction;
@@ -70,10 +74,20 @@ namespace SkySteps.Player
             {
                 RaycastHit2D hit = _hits[i];
                 if (hit.collider == null) continue;
-                if (skipOneWaySurfaces && hit.collider.usedByEffector) continue;
 
                 // Rejects glancing contacts and slopes too steep to count as this kind of surface.
                 if (Vector2.Dot(hit.normal, expectedNormal) < minSurfaceAlignment) continue;
+
+                if (isGroundProbe)
+                {
+                    if (!IsStandingOn(hit)) continue;
+                }
+                else if (hit.collider.usedByEffector)
+                {
+                    // The solver lets the player pass through one-way platforms from below and from
+                    // the side, so treating them as ceiling or wall would cancel motion that succeeds.
+                    continue;
+                }
 
                 result = hit;
                 return true;
@@ -81,6 +95,26 @@ namespace SkySteps.Player
 
             result = default;
             return false;
+        }
+
+        /// <summary>
+        /// True when the player is resting or landing on the hit surface: not inside it, and not
+        /// moving away from it. Jump refunds depend on this, so it has to mean "on top of".
+        /// </summary>
+        private bool IsStandingOn(RaycastHit2D hit)
+        {
+            // A zero-distance hit means the cast started inside the surface. Only one-way platforms
+            // can be entered, and only while passing through them, so that is never a floor. Unity
+            // reports these hits with a normal pointing straight back along the cast, which is why
+            // the alignment test alone accepted them.
+            if (hit.collider.usedByEffector && hit.distance <= 0f) return false;
+
+            Vector2 ownVelocity = _body != null ? _body.linearVelocity : Vector2.zero;
+            Vector2 surfaceVelocity = hit.rigidbody != null
+                ? hit.rigidbody.GetPointVelocity(hit.point)
+                : Vector2.zero;
+
+            return Vector2.Dot(ownVelocity - surfaceVelocity, hit.normal) <= maxSeparationSpeed;
         }
     }
 }
