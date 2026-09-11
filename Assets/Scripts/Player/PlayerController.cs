@@ -3,9 +3,9 @@ using UnityEngine;
 namespace SkySteps.Player
 {
     /// <summary>
-    /// Orchestrates the player systems: samples intent, tracks the coyote and jump-buffer windows,
-    /// and decides each physics step whether a jump press means jump or drop through.
-    /// Deliberately holds no movement or collision logic of its own.
+    /// Orchestrates the player systems: samples intent, feeds <see cref="JumpRules"/>, and carries
+    /// out its verdict each physics step as a jump, an air jump, or a drop through.
+    /// Deliberately holds no movement, collision, or jump-eligibility logic of its own.
     /// </summary>
     [DisallowMultipleComponent]
     public sealed class PlayerController : MonoBehaviour
@@ -16,8 +16,7 @@ namespace SkySteps.Player
         [SerializeField] private OneWayPlatformDropper dropper;
         [SerializeField] private PlayerMovementSettings settings;
 
-        private float _coyoteTimer;
-        private float _jumpBufferTimer;
+        private JumpRules _jumpRules;
 
         private void Awake()
         {
@@ -25,7 +24,10 @@ namespace SkySteps.Player
             {
                 Debug.LogError($"{nameof(PlayerController)}: one or more references are unassigned.", this);
                 enabled = false;
+                return;
             }
+
+            _jumpRules = new JumpRules(settings);
         }
 
         private void Update()
@@ -34,38 +36,35 @@ namespace SkySteps.Player
             // per frame, so a press polled there can be missed entirely or counted twice.
             if (input.JumpPressedThisFrame)
             {
-                _jumpBufferTimer = settings.JumpBufferTime;
+                _jumpRules.RegisterPress();
             }
         }
 
         private void FixedUpdate()
         {
-            float deltaTime = Time.fixedDeltaTime;
-
             contactProbe.Probe();
             bool grounded = contactProbe.IsGrounded && !dropper.IsDropping;
-
-            _coyoteTimer = grounded ? settings.CoyoteTime : Mathf.Max(0f, _coyoteTimer - deltaTime);
-            _jumpBufferTimer = Mathf.Max(0f, _jumpBufferTimer - deltaTime);
+            _jumpRules.Tick(grounded, Time.fixedDeltaTime);
 
             motor.ApplyHorizontal(input.MoveX, grounded);
-            TryConsumeJump();
+            ExecuteJump(_jumpRules.TryConsume());
             motor.ApplyVerticalModifiers(input.JumpHeld, contactProbe.IsTouchingCeiling);
         }
 
-        private void TryConsumeJump()
+        private void ExecuteJump(JumpKind kind)
         {
-            if (_jumpBufferTimer <= 0f || _coyoteTimer <= 0f) return;
-
-            // Holding down converts the jump into a drop when the supporting surface allows it.
-            bool dropped = input.DownHeld && dropper.TryStartDrop();
-            if (!dropped)
+            switch (kind)
             {
-                motor.Jump();
-            }
+                case JumpKind.Ground:
+                    // Holding down turns a ground jump into a drop when the surface allows it.
+                    if (input.DownHeld && dropper.TryStartDrop()) return;
+                    motor.Jump(settings.JumpHeight);
+                    break;
 
-            _jumpBufferTimer = 0f;
-            _coyoteTimer = 0f;
+                case JumpKind.Air:
+                    motor.Jump(settings.AirJumpHeight);
+                    break;
+            }
         }
     }
 }

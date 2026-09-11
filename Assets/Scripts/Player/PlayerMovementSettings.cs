@@ -3,7 +3,7 @@ using UnityEngine;
 namespace SkySteps.Player
 {
     /// <summary>
-    /// Tuning data for <see cref="PlayerMotor"/>. Stored as an asset so movement feel can be
+    /// Tuning data for the player's movement and jump systems. Stored as an asset so feel can be
     /// iterated on, and swapped per character, without touching code or scene state.
     /// </summary>
     [CreateAssetMenu(
@@ -32,6 +32,14 @@ namespace SkySteps.Player
         [Tooltip("Gravity multiplier while rising with jump released, producing variable jump height.")]
         [SerializeField, Min(1f)] private float lowJumpGravityMultiplier = 2.6f;
 
+        [Header("Air Jumps")]
+        [Tooltip("Extra jumps available in mid-air: 1 is a double jump. Refilled whenever the player " +
+                 "stands on a floor, so walking off a ledge still leaves them available.")]
+        [SerializeField, Min(0)] private int airJumps = 1;
+
+        [Tooltip("How high an air jump rises from the point where it starts.")]
+        [SerializeField, Min(0f)] private float airJumpHeight = 3.2f;
+
         [Header("Forgiveness Windows (seconds)")]
         [Tooltip("Grace period after walking off a ledge during which a jump is still accepted.")]
         [SerializeField, Min(0f)] private float coyoteTime = 0.1f;
@@ -56,6 +64,8 @@ namespace SkySteps.Player
         public float MaxFallSpeed => maxFallSpeed;
         public float FallGravityMultiplier => fallGravityMultiplier;
         public float LowJumpGravityMultiplier => lowJumpGravityMultiplier;
+        public int AirJumps => airJumps;
+        public float AirJumpHeight => airJumpHeight;
         public float CoyoteTime => coyoteTime;
         public float JumpBufferTime => jumpBufferTime;
         public float DropThroughDuration => dropThroughDuration;

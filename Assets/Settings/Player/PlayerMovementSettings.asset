@@ -21,6 +21,8 @@ MonoBehaviour:
   maxFallSpeed: 22
   fallGravityMultiplier: 1.9
   lowJumpGravityMultiplier: 2.6
+  airJumps: 1
+  airJumpHeight: 3.2
   coyoteTime: 0.1
   jumpBufferTime: 0.12
   dropThroughDuration: 0.35

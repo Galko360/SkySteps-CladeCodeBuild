@@ -48,17 +48,17 @@ namespace SkySteps.Player
             _body.linearVelocity = velocity;
         }
 
-        /// <summary>Launches the player at exactly the speed needed to reach the configured height.</summary>
-        public void Jump()
+        /// <summary>Launches the player at exactly the speed needed to rise <paramref name="height"/> units.</summary>
+        public void Jump(float height)
         {
             float gravity = Mathf.Abs(Physics2D.gravity.y * _baseGravityScale);
 
             // sqrt(2gh) assumes continuous motion, but the solver steps velocity before position,
             // which loses about v*dt/2 of height (~0.16 units at default settings). Solving the stepped
-            // apex equation h = v^2/(2g) - v*dt/2 for v makes jumpHeight the height actually reached.
+            // apex equation h = v^2/(2g) - v*dt/2 for v makes the requested height the height reached.
             float halfStepGravity = 0.5f * gravity * Time.fixedDeltaTime;
             float jumpSpeed = halfStepGravity +
-                Mathf.Sqrt(halfStepGravity * halfStepGravity + 2f * gravity * settings.JumpHeight);
+                Mathf.Sqrt(halfStepGravity * halfStepGravity + 2f * gravity * height);
 
             Vector2 velocity = _body.linearVelocity;
             velocity.y = jumpSpeed;
