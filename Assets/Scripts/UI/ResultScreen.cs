@@ -1,4 +1,5 @@
 using SkySteps.Level;
+using SkySteps.Player;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,24 +7,28 @@ using UnityEngine.SceneManagement;
 namespace SkySteps.UI
 {
     /// <summary>
-    /// The "You Win!" popup. Freezes the game while it is showing, and reloads the level on restart.
-    /// Lives on an always-active object so it can switch the popup itself on and off.
+    /// The end-of-run popup, for winning and for losing. One popup with swapped wording rather than
+    /// two near-identical ones. Freezes the game while showing, and reloads the level on restart.
     /// </summary>
     [DisallowMultipleComponent]
-    public sealed class WinScreen : MonoBehaviour
+    public sealed class ResultScreen : MonoBehaviour
     {
-        [Tooltip("Root object of the popup. Hidden until the level is completed.")]
+        [Header("Popup")]
         [SerializeField] private GameObject panel;
-
         [SerializeField] private UnityEngine.UI.Button restartButton;
-
-        [Header("Result")]
-        [Tooltip("Optional. With both set, the popup also shows the final coins and score.")]
-        [SerializeField] private ScoreSystem scoreSystem;
+        [SerializeField] private TMP_Text titleLabel;
         [SerializeField] private TMP_Text summaryLabel;
 
-        [Tooltip("Optional. When set, the result line also shows the finish time.")]
+        [Header("Sources")]
+        [SerializeField] private ScoreSystem scoreSystem;
         [SerializeField] private LevelTimer levelTimer;
+        [SerializeField] private PlayerHealth playerHealth;
+
+        [Header("Wording")]
+        [SerializeField] private string winTitle = "You Win!";
+        [SerializeField] private string loseTitle = "Game Over";
+        [SerializeField] private Color winColor = Color.white;
+        [SerializeField] private Color loseColor = new Color(1f, 0.55f, 0.5f, 1f);
 
         public bool IsShowing => panel != null && panel.activeSelf;
 
@@ -31,7 +36,7 @@ namespace SkySteps.UI
         {
             if (panel == null || restartButton == null)
             {
-                Debug.LogError($"{nameof(WinScreen)}: panel and restart button must both be assigned.", this);
+                Debug.LogError($"{nameof(ResultScreen)}: panel and restart button must both be assigned.", this);
                 enabled = false;
                 return;
             }
@@ -40,14 +45,45 @@ namespace SkySteps.UI
             restartButton.onClick.AddListener(Restart);
         }
 
+        private void OnEnable()
+        {
+            if (playerHealth != null) playerHealth.Died += ShowGameOver;
+        }
+
+        private void OnDisable()
+        {
+            if (playerHealth != null) playerHealth.Died -= ShowGameOver;
+        }
+
         private void OnDestroy()
         {
             if (restartButton != null) restartButton.onClick.RemoveListener(Restart);
         }
 
-        /// <summary>Shows the popup and freezes gameplay. Safe to call more than once.</summary>
-        public void Show()
+        /// <summary>Shows the winning result.</summary>
+        public void ShowWin()
         {
+            Show(winTitle, winColor);
+        }
+
+        /// <summary>Shows the losing result. Also used when the last life is lost.</summary>
+        public void ShowGameOver()
+        {
+            Show(loseTitle, loseColor);
+        }
+
+        private void Show(string title, Color titleColor)
+        {
+            if (IsShowing) return;
+
+            if (levelTimer != null) levelTimer.StopTimer();
+
+            if (titleLabel != null)
+            {
+                titleLabel.text = title;
+                titleLabel.color = titleColor;
+            }
+
             if (summaryLabel != null && scoreSystem != null)
             {
                 string summary = $"Coins {scoreSystem.CoinsCollected}/{scoreSystem.TotalCoins}   Score {scoreSystem.Score}";
