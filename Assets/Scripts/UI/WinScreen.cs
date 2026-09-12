@@ -22,6 +22,9 @@ namespace SkySteps.UI
         [SerializeField] private ScoreSystem scoreSystem;
         [SerializeField] private TMP_Text summaryLabel;
 
+        [Tooltip("Optional. When set, the result line also shows the finish time.")]
+        [SerializeField] private LevelTimer levelTimer;
+
         public bool IsShowing => panel != null && panel.activeSelf;
 
         private void Awake()
@@ -47,8 +50,10 @@ namespace SkySteps.UI
         {
             if (summaryLabel != null && scoreSystem != null)
             {
-                summaryLabel.text =
-                    $"Coins {scoreSystem.CoinsCollected}/{scoreSystem.TotalCoins}   Score {scoreSystem.Score}";
+                string summary = $"Coins {scoreSystem.CoinsCollected}/{scoreSystem.TotalCoins}   Score {scoreSystem.Score}";
+                if (levelTimer != null) summary += $"\nTime {levelTimer.FormatElapsed()}";
+
+                summaryLabel.text = summary;
             }
 
             panel.SetActive(true);

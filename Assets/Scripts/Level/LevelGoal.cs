@@ -12,6 +12,9 @@ namespace SkySteps.Level
     {
         [SerializeField] private WinScreen winScreen;
 
+        [Tooltip("Optional. Stopped on arrival, so the popup can show the finish time.")]
+        [SerializeField] private LevelTimer levelTimer;
+
         [Tooltip("Tag that counts as the player reaching the goal.")]
         [SerializeField] private string playerTag = "Player";
 
@@ -37,6 +40,10 @@ namespace SkySteps.Level
             if (_reached || !other.CompareTag(playerTag)) return;
 
             _reached = true;
+
+            // Stopped before the popup reads it, so the time shown is the time of arrival.
+            if (levelTimer != null) levelTimer.StopTimer();
+
             winScreen.Show();
         }
     }
