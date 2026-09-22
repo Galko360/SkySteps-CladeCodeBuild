@@ -12,7 +12,7 @@ namespace SkySteps.Audio
     /// </summary>
     [DisallowMultipleComponent]
     [RequireComponent(typeof(AudioSource))]
-    public sealed class GameAudio : MonoBehaviour
+    public sealed class SoundEffectPlayer : MonoBehaviour
     {
         [Header("Sources")]
         [SerializeField] private PlayerController player;

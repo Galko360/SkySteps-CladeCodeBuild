@@ -9,7 +9,7 @@ namespace SkySteps.Audio
     /// the visuals. Stops when the result popup appears, so the fanfare plays alone.
     /// </summary>
     [DisallowMultipleComponent]
-    public sealed class AdaptiveMusic : MonoBehaviour
+    public sealed class AltitudeMusicMixer : MonoBehaviour
     {
         [SerializeField] private AudioSource baseLayer;
         [SerializeField] private AudioSource spaceLayer;
@@ -34,7 +34,7 @@ namespace SkySteps.Audio
         {
             if (baseLayer == null || spaceLayer == null || player == null)
             {
-                Debug.LogError($"{nameof(AdaptiveMusic)}: both layers and the player must be assigned.", this);
+                Debug.LogError($"{nameof(AltitudeMusicMixer)}: both layers and the player must be assigned.", this);
                 enabled = false;
             }
         }

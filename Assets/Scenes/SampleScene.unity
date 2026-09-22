@@ -4900,7 +4900,7 @@ GameObject:
   - component: {fileID: 1681300722}
   - component: {fileID: 1681300721}
   m_Layer: 0
-  m_Name: GameAudio
+  m_Name: SoundEffectPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

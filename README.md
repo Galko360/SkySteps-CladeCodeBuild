@@ -85,7 +85,7 @@ Scripts are grouped by responsibility under `Assets/Scripts`:
 | `Level/` | `Coin`, `Hazard`, `LevelGoal`, `ScoreSystem`, `LevelTimer` |
 | `Camera/` | `CameraFollow2D`, `CameraBounds`, `ParallaxLayer` |
 | `UI/` | `ResultScreen`, `ScoreHud`, `LivesHud`, `TimerHud`, `Minimap`, `MinimapMarker` |
-| `Audio/` | `GameAudio` (sound effects), `AdaptiveMusic` |
+| `Audio/` | `SoundEffectPlayer`, `AltitudeMusicMixer` (fades the space layer in with height) |
 
 Design choices:
 
