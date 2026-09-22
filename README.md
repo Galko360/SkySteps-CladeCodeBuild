@@ -5,12 +5,14 @@ Every script, GameObject, component, Inspector value and asset in this project w
 Claude Code working through an MCP bridge to the Unity Editor. No C# was written by hand, and
 nothing was created or edited manually in the Editor.
 
+![Title screen](Docs/Screenshots/title_screen.png)
 ![Low in the sky](Docs/Screenshots/tiles_low.png)
 ![Near the summit, in the starfield](Docs/Screenshots/tiles_high.png)
 
 ## How to play
 
-Climb from the ground to the gold goal at the top of the sky.
+Climb from the ground to the gold goal at the top of the sky. The game opens on a title screen;
+press **Play** to start.
 
 | Action | Keyboard | Gamepad |
 |---|---|---|
@@ -18,12 +20,15 @@ Climb from the ground to the gold goal at the top of the sky.
 | Jump | Space | South button (A) |
 | Double jump | Jump again in mid-air | Jump again in mid-air |
 | Drop through a platform | Hold S or ↓, then Jump | Hold down, then Jump |
+| Pause | Esc | Start |
+| Menu buttons | Mouse, or ↑ / ↓ and Enter | D-pad and South button (A) |
 
 - **Coins:** 10 in the level, 10 points each. They show as yellow dots on the minimap.
 - **Spikes** cost a life. You respawn on the last platform you stood on, briefly invulnerable.
 - **Lives:** 3. Lose them all and it's **Game Over**.
 - **Timer:** runs until you reach the goal. The result screen shows coins, score and time, with a
   **Restart** button.
+- **Pause** at any time for Resume, Restart or Quit to Title. The timer stops while paused.
 - The pale **plank** platforms can be jumped up through and dropped down through; **stone** ones
   are solid.
 
@@ -37,9 +42,9 @@ Climb from the ground to the gold goal at the top of the sky.
 | Challenge / lose condition | Spikes, 3 lives, **"Game Over"** — `Hazard`, `PlayerHealth` |
 | At least 3 interactive objects | Coins, spikes, one-way platforms, the goal |
 | At least 3 AI-generated assets | Over 30 — see below |
-| Basic UI | Lives, coins, score and timer HUD; minimap; result popup |
+| Basic UI | Title screen; pause menu; lives, coins, score and timer HUD; minimap; result popup |
 | Score, lives, time or other metric | All three: score, lives and a run timer |
-| Restart | Restart button on the result popup reloads the level |
+| Restart | Restart on the result popup or the pause menu reloads the level |
 | Short video | Submitted separately |
 
 ## Built entirely by AI
@@ -86,7 +91,7 @@ Scripts are grouped by responsibility under `Assets/Scripts`:
 | `Level/` | `Coin`, `Hazard`, `LevelGoal`, `ScoreSystem`, `LevelTimer` |
 | `Camera/` | `CameraFollow2D`, `CameraBounds`, `ParallaxLayer`, `DamageCameraShake` |
 | `Effects/` | `FootDustEmitter` (dust on takeoff and landing), `CoinSparkleEmitter`, `PlayerDamageFlash` |
-| `UI/` | `ResultScreen`, `ScoreHud`, `LivesHud`, `TimerHud`, `Minimap`, `MinimapMarker` |
+| `UI/` | `TitleScreenMenu`, `PauseMenu` (freezes time, mutes audio, halts player input), `SceneLoader` (every scene change, resetting pause state), `ResultScreen`, `ScoreHud`, `LivesHud`, `TimerHud`, `Minimap`, `MinimapMarker` |
 | `Audio/` | `SoundEffectPlayer`, `AltitudeMusicMixer` (fades the space layer in with height) |
 
 Design choices:
@@ -102,4 +107,5 @@ Design choices:
 
 ## Opening the project
 
-Unity **6000.3.9f1** with URP 2D. Open `Assets/Scenes/SampleScene.unity` and press Play.
+Unity **6000.3.9f1** with URP 2D. Open `Assets/Scenes/Title.unity` and press Play. The level itself
+is `Assets/Scenes/Level01.unity`; both are in the build, title first.

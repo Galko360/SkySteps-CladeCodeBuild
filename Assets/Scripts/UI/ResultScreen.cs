@@ -3,7 +3,6 @@ using SkySteps.Level;
 using SkySteps.Player;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace SkySteps.UI
 {
@@ -108,9 +107,7 @@ namespace SkySteps.UI
         /// <summary>Reloads the current level from the start.</summary>
         public void Restart()
         {
-            // Time has to be restored first, or the reloaded scene starts frozen.
-            Time.timeScale = 1f;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneLoader.ReloadCurrent();
         }
     }
 }
