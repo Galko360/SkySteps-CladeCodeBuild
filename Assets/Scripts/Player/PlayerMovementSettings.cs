@@ -40,6 +40,9 @@ namespace SkySteps.Player
         [Tooltip("How high an air jump rises from the point where it starts.")]
         [SerializeField, Min(0f)] private float airJumpHeight = 3.2f;
 
+        [Tooltip("How high the player bounces after stomping an enemy.")]
+        [SerializeField, Min(0f)] private float stompBounceHeight = 2.4f;
+
         [Header("Forgiveness Windows (seconds)")]
         [Tooltip("Grace period after walking off a ledge during which a jump is still accepted.")]
         [SerializeField, Min(0f)] private float coyoteTime = 0.1f;
@@ -66,6 +69,7 @@ namespace SkySteps.Player
         public float LowJumpGravityMultiplier => lowJumpGravityMultiplier;
         public int AirJumps => airJumps;
         public float AirJumpHeight => airJumpHeight;
+        public float StompBounceHeight => stompBounceHeight;
         public float CoyoteTime => coyoteTime;
         public float JumpBufferTime => jumpBufferTime;
         public float DropThroughDuration => dropThroughDuration;

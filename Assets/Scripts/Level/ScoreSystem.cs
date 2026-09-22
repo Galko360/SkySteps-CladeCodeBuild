@@ -12,6 +12,7 @@ namespace SkySteps.Level
     public sealed class ScoreSystem : MonoBehaviour
     {
         [SerializeField, Min(0)] private int pointsPerCoin = 10;
+        [SerializeField, Min(0)] private int pointsPerStomp = 20;
 
         /// <summary>Raised whenever the score or the coin count changes.</summary>
         public event Action Changed;
@@ -21,6 +22,9 @@ namespace SkySteps.Level
         /// coins register at the start and so cannot tell a pickup apart.
         /// </summary>
         public event Action CoinCollected;
+
+        /// <summary>Raised when an enemy is stomped, with where it was.</summary>
+        public event Action<Vector2> EnemyStomped;
 
         public int Score { get; private set; }
         public int CoinsCollected { get; private set; }
@@ -41,6 +45,14 @@ namespace SkySteps.Level
             Score += pointsPerCoin;
             Changed?.Invoke();
             CoinCollected?.Invoke();
+        }
+
+        /// <summary>Awards a stomped enemy.</summary>
+        public void AwardEnemyStomp(Vector2 position)
+        {
+            Score += pointsPerStomp;
+            Changed?.Invoke();
+            EnemyStomped?.Invoke(position);
         }
     }
 }

@@ -8,6 +8,7 @@ nothing was created or edited manually in the Editor.
 ![Title screen](Docs/Screenshots/title_screen.png)
 ![Low in the sky](Docs/Screenshots/tiles_low.png)
 ![Near the summit, in the starfield](Docs/Screenshots/tiles_high.png)
+![Slimes on patrol](Docs/Screenshots/slimes.png)
 
 ## How to play
 
@@ -24,6 +25,9 @@ press **Play** to start.
 | Menu buttons | Mouse, or ↑ / ↓ and Enter | D-pad and South button (A) |
 
 - **Coins:** 10 in the level, 10 points each. They show as yellow dots on the minimap.
+- **Slimes** patrol the ground floor, a low platform and the summit. Land on one to squash it for
+  **20 points** and a bounce that gives your double jump back; touch one from the side and you lose
+  a life. They show as red dots on the minimap.
 - **Spikes** cost a life. You respawn on the last platform you stood on, briefly invulnerable.
 - **Lives:** 3. Lose them all and it's **Game Over**.
 - **Timer:** runs until you reach the goal. The result screen shows coins, score and time, with a
@@ -39,8 +43,8 @@ press **Play** to start.
 | Controllable player | Run, jump, double jump, drop through platforms — `Assets/Scripts/Player` |
 | Clear goal | Reach the gold goal at the top of the level |
 | Win condition | Goal trigger shows **"You Win!"** — `LevelGoal`, `ResultScreen` |
-| Challenge / lose condition | Spikes, 3 lives, **"Game Over"** — `Hazard`, `PlayerHealth` |
-| At least 3 interactive objects | Coins, spikes, one-way platforms, the goal |
+| Challenge / lose condition | Spikes, patrolling slimes, 3 lives, **"Game Over"** — `Hazard`, `StompableEnemy`, `PlayerHealth` |
+| At least 3 interactive objects | Coins, spikes, slimes, one-way platforms, the goal |
 | At least 3 AI-generated assets | Over 30 — see below |
 | Basic UI | Title screen; pause menu; lives, coins, score and timer HUD; minimap; result popup |
 | Score, lives, time or other metric | All three: score, lives and a run timer |
@@ -74,9 +78,11 @@ model was used, and nothing was drawn or recorded by hand.
 | **Player animation** — 17 frames: idle ×4, run ×8, jump ×2, land ×3 | A posable skeleton (head, torso, arms with elbows, legs with knees) rendered to 40×64 pixel art. Each frame is the same body in a different pose, so all frames stay consistent. |
 | **Sky backdrop** | Procedural gradient from hazy horizon to deep space, with clouds, a star field that thickens with height, and ordered dithering |
 | **Platform tiles** — stone and plank | Procedural tiles with lit edges, joints and speckle, repeated across each platform |
+| **Slime enemy** — 5 frames: hop ×4, squashed ×1 | A shaded, outlined dome whose proportions change per frame (settle, squash, stretch in the air, land), with a face drawn on top |
+| **HUD pixel font** — digits, A–Z and punctuation | A 5×7 pixel alphabet drawn as data, with a dark outline and drop shadow baked in, packed into a TextMeshPro font asset. Digits share one width so the running timer never shifts |
 | **Spikes** and **heart icon** | Code-drawn pixel art |
-| **Dust and sparkle particles** | Code-drawn sprites for the jump and landing dust and the coin-pickup burst |
-| **7 sound effects** | Synthesised chiptune: jump, air jump, land, coin, hurt, win, game over |
+| **Dust and sparkle particles** | Code-drawn sprites for the jump and landing dust, the coin-pickup burst and the stomp splat |
+| **8 sound effects** | Synthesised chiptune: jump, air jump, land, coin, stomp, hurt, win, game over |
 | **Background music** — 2 layers | A 16-bar loop in F major composed as data and synthesised. The second layer fades in as you climb, so the music moves from sky to space with the visuals. |
 
 ![All 17 animation frames](Docs/Screenshots/character_frames.png)
@@ -88,9 +94,10 @@ Scripts are grouped by responsibility under `Assets/Scripts`:
 | Folder | Scripts |
 |---|---|
 | `Player/` | `PlayerController` (coordinates the systems), `PlayerInputReader` (Input System), `PlayerMotor` (acceleration, friction, jumps), `PlayerContactProbe` (swept-AABB ground, wall and ceiling detection), `JumpRules` (coyote time, jump buffer, double jump), `OneWayPlatformDropper`, `PlayerHealth`, `PlayerAnimator`, `PlayerMovementSettings` (tuning asset) |
+| `Enemies/` | `PatrolMover` (walks between two points), `StompableEnemy` (stomp or hurt, decided by how the player touches it) |
 | `Level/` | `Coin`, `Hazard`, `LevelGoal`, `ScoreSystem`, `LevelTimer` |
 | `Camera/` | `CameraFollow2D`, `CameraBounds`, `ParallaxLayer`, `DamageCameraShake` |
-| `Effects/` | `FootDustEmitter` (dust on takeoff and landing), `CoinSparkleEmitter`, `PlayerDamageFlash` |
+| `Effects/` | `FootDustEmitter` (dust on takeoff and landing), `CoinSparkleEmitter`, `StompPuffEmitter`, `PlayerDamageFlash` |
 | `UI/` | `TitleScreenMenu`, `PauseMenu` (freezes time, mutes audio, halts player input), `SceneLoader` (every scene change, resetting pause state), `ResultScreen`, `ScoreHud`, `LivesHud`, `TimerHud`, `Minimap`, `MinimapMarker` |
 | `Audio/` | `SoundEffectPlayer`, `AltitudeMusicMixer` (fades the space layer in with height) |
 

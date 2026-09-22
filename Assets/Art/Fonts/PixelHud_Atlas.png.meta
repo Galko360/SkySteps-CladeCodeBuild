@@ -1,0 +1,1118 @@
+fileFormatVersion: 2
+guid: 31b78e883bb53af4784237a3e1eda884
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 275634071458649693
+    second: PixelHud_Atlas_0
+  - first:
+      213: 2102858041927504906
+    second: PixelHud_Atlas_1
+  - first:
+      213: 2030373149046039508
+    second: PixelHud_Atlas_2
+  - first:
+      213: -1341286639922680982
+    second: PixelHud_Atlas_3
+  - first:
+      213: 935322008547486877
+    second: PixelHud_Atlas_4
+  - first:
+      213: -1120449351390537206
+    second: PixelHud_Atlas_5
+  - first:
+      213: 7588698093486560943
+    second: PixelHud_Atlas_6
+  - first:
+      213: -3936646675995050576
+    second: PixelHud_Atlas_7
+  - first:
+      213: -4003654275732710019
+    second: PixelHud_Atlas_8
+  - first:
+      213: 3814842597073675768
+    second: PixelHud_Atlas_9
+  - first:
+      213: 8605374361494053870
+    second: PixelHud_Atlas_10
+  - first:
+      213: 2546020037668209318
+    second: PixelHud_Atlas_11
+  - first:
+      213: 9195329200817976535
+    second: PixelHud_Atlas_12
+  - first:
+      213: 1797899895225843339
+    second: PixelHud_Atlas_13
+  - first:
+      213: -4347704557848766373
+    second: PixelHud_Atlas_14
+  - first:
+      213: 7968285211260940624
+    second: PixelHud_Atlas_15
+  - first:
+      213: -4437132889021854507
+    second: PixelHud_Atlas_16
+  - first:
+      213: -5037685103571926534
+    second: PixelHud_Atlas_17
+  - first:
+      213: 6766977150693381340
+    second: PixelHud_Atlas_18
+  - first:
+      213: -111456553036514301
+    second: PixelHud_Atlas_19
+  - first:
+      213: -1357939976271974836
+    second: PixelHud_Atlas_20
+  - first:
+      213: 2340063308089328471
+    second: PixelHud_Atlas_21
+  - first:
+      213: -5895935460483083589
+    second: PixelHud_Atlas_22
+  - first:
+      213: -992520436685006873
+    second: PixelHud_Atlas_23
+  - first:
+      213: 861307462921766615
+    second: PixelHud_Atlas_24
+  - first:
+      213: -74416442797646119
+    second: PixelHud_Atlas_25
+  - first:
+      213: 1423574090568666045
+    second: PixelHud_Atlas_26
+  - first:
+      213: -6843909301163795884
+    second: PixelHud_Atlas_27
+  - first:
+      213: -4988249392532218675
+    second: PixelHud_Atlas_28
+  - first:
+      213: -6635157127067542468
+    second: PixelHud_Atlas_29
+  - first:
+      213: -7422865324409307426
+    second: PixelHud_Atlas_30
+  - first:
+      213: -249146535477364244
+    second: PixelHud_Atlas_31
+  - first:
+      213: 2769612057060048960
+    second: PixelHud_Atlas_32
+  - first:
+      213: -1416111212048673602
+    second: PixelHud_Atlas_33
+  - first:
+      213: 3689026888690920633
+    second: PixelHud_Atlas_34
+  - first:
+      213: 9207838387952622543
+    second: PixelHud_Atlas_35
+  - first:
+      213: -797525931555167395
+    second: PixelHud_Atlas_36
+  - first:
+      213: -2262495171746638276
+    second: PixelHud_Atlas_37
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 0
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PixelHud_Atlas_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 52
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5699454abf33d300800000000000000
+      internalID: 275634071458649693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 41
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a04992a6f3ade2d10800000000000000
+      internalID: 2102858041927504906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_2
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 52
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d361662f955d2c10800000000000000
+      internalID: 2030373149046039508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_3
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 41
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6b6e6d48eac26de0800000000000000
+      internalID: -1341286639922680982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_4
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 52
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9ce316496eeafc00800000000000000
+      internalID: 935322008547486877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_5
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 41
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0adc85504d5370f0800000000000000
+      internalID: -1120449351390537206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_6
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 52
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa653f995b8705960800000000000000
+      internalID: 7588698093486560943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_7
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 41
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bdb71794b83e59c0800000000000000
+      internalID: -3936646675995050576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_8
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 52
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7d5a7306a92078c0800000000000000
+      internalID: -4003654275732710019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_9
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 41
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f5ea90512b01f430800000000000000
+      internalID: 3814842597073675768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_10
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 52
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee36b18736e6c6770800000000000000
+      internalID: 8605374361494053870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_11
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 41
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a28d302cb7455320800000000000000
+      internalID: 2546020037668209318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_12
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 52
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d4388f603f5c9f70800000000000000
+      internalID: 9195329200817976535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_13
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 41
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8ef5a4dd6c63f810800000000000000
+      internalID: 1797899895225843339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_14
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 52
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b58d3116db9d9a3c0800000000000000
+      internalID: -4347704557848766373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_15
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 41
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 051f43e8e29059e60800000000000000
+      internalID: 7968285211260940624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_16
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 41
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5dc46a875232c62c0800000000000000
+      internalID: -4437132889021854507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_17
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 52
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af1815fc61c861ab0800000000000000
+      internalID: -5037685103571926534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_18
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 52
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd493469dd129ed50800000000000000
+      internalID: 6766977150693381340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_19
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 41
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30c7e540bd6047ef0800000000000000
+      internalID: -111456553036514301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_20
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 52
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4ea10849c0a72de0800000000000000
+      internalID: -1357939976271974836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_21
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 41
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75307963e23997020800000000000000
+      internalID: 2340063308089328471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_22
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 52
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb2d64bcfed6d2ea0800000000000000
+      internalID: -5895935460483083589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_23
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 41
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e71313ebebd932f0800000000000000
+      internalID: -992520436685006873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_24
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 52
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d648d9f29af3fb00800000000000000
+      internalID: 861307462921766615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_25
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 41
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9de1999b3ae97fef0800000000000000
+      internalID: -74416442797646119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_26
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 52
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbb8bcbc71d81c310800000000000000
+      internalID: 1423574090568666045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_27
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 41
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45ad32d40cc8501a0800000000000000
+      internalID: -6843909301163795884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_28
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 52
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcc1f0b3b9d26cab0800000000000000
+      internalID: -4988249392532218675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_29
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 41
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3cdc3c5fbf2be3a0800000000000000
+      internalID: -6635157127067542468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 30
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edeb403c05facf890800000000000000
+      internalID: -7422865324409307426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_31
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 30
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce93ad7cb8ada8cf0800000000000000
+      internalID: -249146535477364244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_32
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 30
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04004baed73af6620800000000000000
+      internalID: 2769612057060048960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_33
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 30
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb414630b56f85ce0800000000000000
+      internalID: -1416111212048673602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_34
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 30
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bc6943f86e023330800000000000000
+      internalID: 3689026888690920633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_35
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 30
+        width: 17
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcb1f178a30d8cf70800000000000000
+      internalID: 9207838387952622543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_36
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 30
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d53ed76046e9ee4f0800000000000000
+      internalID: -797525931555167395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelHud_Atlas_37
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 30
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c365106e0a00a90e0800000000000000
+      internalID: -2262495171746638276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      PixelHud_Atlas_0: 275634071458649693
+      PixelHud_Atlas_1: 2102858041927504906
+      PixelHud_Atlas_10: 8605374361494053870
+      PixelHud_Atlas_11: 2546020037668209318
+      PixelHud_Atlas_12: 9195329200817976535
+      PixelHud_Atlas_13: 1797899895225843339
+      PixelHud_Atlas_14: -4347704557848766373
+      PixelHud_Atlas_15: 7968285211260940624
+      PixelHud_Atlas_16: -4437132889021854507
+      PixelHud_Atlas_17: -5037685103571926534
+      PixelHud_Atlas_18: 6766977150693381340
+      PixelHud_Atlas_19: -111456553036514301
+      PixelHud_Atlas_2: 2030373149046039508
+      PixelHud_Atlas_20: -1357939976271974836
+      PixelHud_Atlas_21: 2340063308089328471
+      PixelHud_Atlas_22: -5895935460483083589
+      PixelHud_Atlas_23: -992520436685006873
+      PixelHud_Atlas_24: 861307462921766615
+      PixelHud_Atlas_25: -74416442797646119
+      PixelHud_Atlas_26: 1423574090568666045
+      PixelHud_Atlas_27: -6843909301163795884
+      PixelHud_Atlas_28: -4988249392532218675
+      PixelHud_Atlas_29: -6635157127067542468
+      PixelHud_Atlas_3: -1341286639922680982
+      PixelHud_Atlas_30: -7422865324409307426
+      PixelHud_Atlas_31: -249146535477364244
+      PixelHud_Atlas_32: 2769612057060048960
+      PixelHud_Atlas_33: -1416111212048673602
+      PixelHud_Atlas_34: 3689026888690920633
+      PixelHud_Atlas_35: 9207838387952622543
+      PixelHud_Atlas_36: -797525931555167395
+      PixelHud_Atlas_37: -2262495171746638276
+      PixelHud_Atlas_4: 935322008547486877
+      PixelHud_Atlas_5: -1120449351390537206
+      PixelHud_Atlas_6: 7588698093486560943
+      PixelHud_Atlas_7: -3936646675995050576
+      PixelHud_Atlas_8: -4003654275732710019
+      PixelHud_Atlas_9: 3814842597073675768
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

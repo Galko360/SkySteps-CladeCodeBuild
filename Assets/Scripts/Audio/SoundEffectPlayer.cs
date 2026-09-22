@@ -25,6 +25,7 @@ namespace SkySteps.Audio
         [SerializeField] private AudioClip airJump;
         [SerializeField] private AudioClip land;
         [SerializeField] private AudioClip coin;
+        [SerializeField] private AudioClip stomp;
         [SerializeField] private AudioClip hurt;
         [SerializeField] private AudioClip win;
         [SerializeField] private AudioClip gameOver;
@@ -44,7 +45,12 @@ namespace SkySteps.Audio
                 player.Landed += OnLanded;
             }
 
-            if (scoreSystem != null) scoreSystem.CoinCollected += OnCoinCollected;
+            if (scoreSystem != null)
+            {
+                scoreSystem.CoinCollected += OnCoinCollected;
+                scoreSystem.EnemyStomped += OnEnemyStomped;
+            }
+
             if (playerHealth != null) playerHealth.Damaged += OnDamaged;
             if (resultScreen != null) resultScreen.Shown += OnResultShown;
         }
@@ -57,7 +63,12 @@ namespace SkySteps.Audio
                 player.Landed -= OnLanded;
             }
 
-            if (scoreSystem != null) scoreSystem.CoinCollected -= OnCoinCollected;
+            if (scoreSystem != null)
+            {
+                scoreSystem.CoinCollected -= OnCoinCollected;
+                scoreSystem.EnemyStomped -= OnEnemyStomped;
+            }
+
             if (playerHealth != null) playerHealth.Damaged -= OnDamaged;
             if (resultScreen != null) resultScreen.Shown -= OnResultShown;
         }
@@ -65,6 +76,7 @@ namespace SkySteps.Audio
         private void OnJumped(JumpKind kind) => Play(kind == JumpKind.Air ? airJump : jump);
         private void OnLanded() => Play(land);
         private void OnCoinCollected() => Play(coin);
+        private void OnEnemyStomped(Vector2 position) => Play(stomp);
         private void OnDamaged() => Play(hurt);
         private void OnResultShown(bool won) => Play(won ? win : gameOver);
 

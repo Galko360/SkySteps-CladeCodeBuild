@@ -36,6 +36,12 @@ namespace SkySteps.Player
             _bufferTimer = _settings.JumpBufferTime;
         }
 
+        /// <summary>Restores the full air-jump budget mid-air, e.g. after bouncing off an enemy.</summary>
+        public void RefillAirJumps()
+        {
+            AirJumpsRemaining = _settings.AirJumps;
+        }
+
         /// <summary>Advances the windows. Call once per physics step, before <see cref="TryConsume"/>.</summary>
         public void Tick(bool grounded, float deltaTime)
         {

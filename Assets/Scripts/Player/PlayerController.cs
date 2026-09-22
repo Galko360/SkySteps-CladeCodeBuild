@@ -81,7 +81,6 @@ namespace SkySteps.Player
             _wasGrounded = grounded;
         }
 
-
         private void ExecuteJump(JumpKind kind)
         {
             switch (kind)
@@ -98,6 +97,18 @@ namespace SkySteps.Player
                     Jumped?.Invoke(kind);
                     break;
             }
+        }
+
+        /// <summary>
+        /// Launches the player upward off a stomped enemy and gives back the double jump, so a stomp
+        /// can be chained into further climbing.
+        /// </summary>
+        public void BounceOffEnemy()
+        {
+            if (!enabled) return;
+
+            motor.Jump(settings.StompBounceHeight);
+            _jumpRules.RefillAirJumps();
         }
     }
 }
