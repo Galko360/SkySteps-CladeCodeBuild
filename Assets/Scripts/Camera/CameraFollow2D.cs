@@ -22,6 +22,9 @@ namespace SkySteps.Cameras
         [Tooltip("Optional. When set, the camera never shows anything outside this area.")]
         [SerializeField] private CameraBounds bounds;
 
+        [Tooltip("Optional. Adds a shake on top of the follow; the shaken view still stays inside the bounds.")]
+        [SerializeField] private DamageCameraShake shake;
+
         [Header("Framing")]
         [Tooltip("Where the target sits relative to the screen centre. Positive Y shows more of the level above.")]
         [SerializeField] private Vector2 framingOffset = new Vector2(0f, 1f);
@@ -43,6 +46,10 @@ namespace SkySteps.Cameras
         [SerializeField, Min(0f)] private float maxFallBeforeFollow = 1f;
 
         private Camera _camera;
+
+        // Where the camera sits before any shake. Smoothing works from this rather than from the
+        // transform, so a shake never feeds back into the follow and the camera settles back exactly.
+        private Vector2 _restPosition;
         private float _anchorY;
         private float _velocityX;
         private float _velocityY;
@@ -75,7 +82,8 @@ namespace SkySteps.Cameras
             _anchorY = target.position.y;
             _velocityX = 0f;
             _velocityY = 0f;
-            SetPosition(ClampToBounds(GoalPosition()));
+            _restPosition = ClampToBounds(GoalPosition());
+            SetPosition(_restPosition);
         }
 
         private void LateUpdate()
@@ -83,14 +91,17 @@ namespace SkySteps.Cameras
             UpdateAnchor();
 
             Vector2 goal = ClampToBounds(GoalPosition());
-            Vector3 current = transform.position;
             Vector2 next = new Vector2(
-                Mathf.SmoothDamp(current.x, goal.x, ref _velocityX, horizontalSmoothTime),
-                Mathf.SmoothDamp(current.y, goal.y, ref _velocityY, verticalSmoothTime));
+                Mathf.SmoothDamp(_restPosition.x, goal.x, ref _velocityX, horizontalSmoothTime),
+                Mathf.SmoothDamp(_restPosition.y, goal.y, ref _velocityY, verticalSmoothTime));
 
             // Smoothing lags a fast-moving target (a max-speed fall trails by several units), so the
             // target is pushed back inside the edge margin first, and the map bounds get the last word.
-            SetPosition(ClampToBounds(KeepTargetInView(next)));
+            _restPosition = ClampToBounds(KeepTargetInView(next));
+
+            // Clamped again after shaking, so a shake near the map edge cannot show beyond it.
+            Vector2 shaken = shake != null ? _restPosition + shake.Offset : _restPosition;
+            SetPosition(ClampToBounds(shaken));
         }
 
         /// <summary>

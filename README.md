@@ -70,6 +70,7 @@ model was used, and nothing was drawn or recorded by hand.
 | **Sky backdrop** | Procedural gradient from hazy horizon to deep space, with clouds, a star field that thickens with height, and ordered dithering |
 | **Platform tiles** — stone and plank | Procedural tiles with lit edges, joints and speckle, repeated across each platform |
 | **Spikes** and **heart icon** | Code-drawn pixel art |
+| **Dust and sparkle particles** | Code-drawn sprites for the jump and landing dust and the coin-pickup burst |
 | **7 sound effects** | Synthesised chiptune: jump, air jump, land, coin, hurt, win, game over |
 | **Background music** — 2 layers | A 16-bar loop in F major composed as data and synthesised. The second layer fades in as you climb, so the music moves from sky to space with the visuals. |
 
@@ -83,15 +84,16 @@ Scripts are grouped by responsibility under `Assets/Scripts`:
 |---|---|
 | `Player/` | `PlayerController` (coordinates the systems), `PlayerInputReader` (Input System), `PlayerMotor` (acceleration, friction, jumps), `PlayerContactProbe` (swept-AABB ground, wall and ceiling detection), `JumpRules` (coyote time, jump buffer, double jump), `OneWayPlatformDropper`, `PlayerHealth`, `PlayerAnimator`, `PlayerMovementSettings` (tuning asset) |
 | `Level/` | `Coin`, `Hazard`, `LevelGoal`, `ScoreSystem`, `LevelTimer` |
-| `Camera/` | `CameraFollow2D`, `CameraBounds`, `ParallaxLayer` |
+| `Camera/` | `CameraFollow2D`, `CameraBounds`, `ParallaxLayer`, `DamageCameraShake` |
+| `Effects/` | `FootDustEmitter` (dust on takeoff and landing), `CoinSparkleEmitter`, `PlayerDamageFlash` |
 | `UI/` | `ResultScreen`, `ScoreHud`, `LivesHud`, `TimerHud`, `Minimap`, `MinimapMarker` |
 | `Audio/` | `SoundEffectPlayer`, `AltitudeMusicMixer` (fades the space layer in with height) |
 
 Design choices:
 
 - **Events, not coupling.** Gameplay systems announce what happened (`Jumped`, `Landed`,
-  `CoinCollected`, `Damaged`, `Shown`), and the UI and audio listen. Gameplay code never touches UI
-  or audio.
+  `CoinCollected`, `Damaged`, `Shown`), and the UI, audio and visual effects listen. Gameplay code
+  never touches any of them.
 - **One job per class.** For example, movement is split into input, motor, contact detection and
   jump rules rather than one large player script.
 - **No scene searches or per-frame waste.** References are wired in the Inspector (via MCP) rather
