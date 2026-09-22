@@ -1,3 +1,4 @@
+using System;
 using SkySteps.Level;
 using SkySteps.Player;
 using TMPro;
@@ -29,6 +30,9 @@ namespace SkySteps.UI
         [SerializeField] private string loseTitle = "Game Over";
         [SerializeField] private Color winColor = Color.white;
         [SerializeField] private Color loseColor = new Color(1f, 0.55f, 0.5f, 1f);
+
+        /// <summary>Raised once when the popup appears; true for a win, false for game over.</summary>
+        public event Action<bool> Shown;
 
         public bool IsShowing => panel != null && panel.activeSelf;
 
@@ -63,16 +67,16 @@ namespace SkySteps.UI
         /// <summary>Shows the winning result.</summary>
         public void ShowWin()
         {
-            Show(winTitle, winColor);
+            Show(winTitle, winColor, won: true);
         }
 
         /// <summary>Shows the losing result. Also used when the last life is lost.</summary>
         public void ShowGameOver()
         {
-            Show(loseTitle, loseColor);
+            Show(loseTitle, loseColor, won: false);
         }
 
-        private void Show(string title, Color titleColor)
+        private void Show(string title, Color titleColor, bool won)
         {
             if (IsShowing) return;
 
@@ -97,6 +101,8 @@ namespace SkySteps.UI
             // Freezing time stops physics and FixedUpdate without disabling the player's components.
             // The popup still responds, because uGUI input runs on unscaled time.
             Time.timeScale = 0f;
+
+            Shown?.Invoke(won);
         }
 
         /// <summary>Reloads the current level from the start.</summary>

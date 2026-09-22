@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace SkySteps.Player
@@ -16,7 +17,18 @@ namespace SkySteps.Player
         [SerializeField] private OneWayPlatformDropper dropper;
         [SerializeField] private PlayerMovementSettings settings;
 
+        [Tooltip("Slowest fall, in units per second, that counts as a landing rather than stepping down.")]
+        [SerializeField, Min(0f)] private float minLandingSpeed = 6f;
+
+        /// <summary>Raised when a jump actually happens, saying whether it was from the ground or mid-air.</summary>
+        public event Action<JumpKind> Jumped;
+
+        /// <summary>Raised when the player touches down after a real fall.</summary>
+        public event Action Landed;
+
         private JumpRules _jumpRules;
+        private bool _wasGrounded;
+        private float _peakFallSpeed;
 
         private void Awake()
         {
@@ -45,11 +57,30 @@ namespace SkySteps.Player
             contactProbe.Probe();
             bool grounded = contactProbe.IsGrounded && !dropper.IsDropping;
             _jumpRules.Tick(grounded, Time.fixedDeltaTime);
+            TrackLanding(grounded);
 
             motor.ApplyHorizontal(input.MoveX, grounded);
             ExecuteJump(_jumpRules.TryConsume());
             motor.ApplyVerticalModifiers(input.JumpHeld, contactProbe.IsTouchingCeiling);
         }
+
+        private void TrackLanding(bool grounded)
+        {
+            if (!grounded)
+            {
+                // The fastest fall is remembered while airborne because by the time the probe reports
+                // ground, the solver has already stopped the body and its speed reads as zero.
+                _peakFallSpeed = Mathf.Max(_peakFallSpeed, -motor.Velocity.y);
+            }
+            else if (!_wasGrounded && _peakFallSpeed >= minLandingSpeed)
+            {
+                Landed?.Invoke();
+            }
+
+            if (grounded) _peakFallSpeed = 0f;
+            _wasGrounded = grounded;
+        }
+
 
         private void ExecuteJump(JumpKind kind)
         {
@@ -59,10 +90,12 @@ namespace SkySteps.Player
                     // Holding down turns a ground jump into a drop when the surface allows it.
                     if (input.DownHeld && dropper.TryStartDrop()) return;
                     motor.Jump(settings.JumpHeight);
+                    Jumped?.Invoke(kind);
                     break;
 
                 case JumpKind.Air:
                     motor.Jump(settings.AirJumpHeight);
+                    Jumped?.Invoke(kind);
                     break;
             }
         }

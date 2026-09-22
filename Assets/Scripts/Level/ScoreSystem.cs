@@ -16,6 +16,12 @@ namespace SkySteps.Level
         /// <summary>Raised whenever the score or the coin count changes.</summary>
         public event Action Changed;
 
+        /// <summary>
+        /// Raised when a coin is picked up. Separate from <see cref="Changed"/>, which also fires as
+        /// coins register at the start and so cannot tell a pickup apart.
+        /// </summary>
+        public event Action CoinCollected;
+
         public int Score { get; private set; }
         public int CoinsCollected { get; private set; }
         public int TotalCoins { get; private set; }
@@ -34,6 +40,7 @@ namespace SkySteps.Level
             CoinsCollected++;
             Score += pointsPerCoin;
             Changed?.Invoke();
+            CoinCollected?.Invoke();
         }
     }
 }

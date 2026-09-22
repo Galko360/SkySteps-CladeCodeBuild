@@ -27,6 +27,12 @@ namespace SkySteps.Player
         /// <summary>Raised once when the last life is lost.</summary>
         public event Action Died;
 
+        /// <summary>
+        /// Raised when a hit costs a life but is not the last one. The final hit raises only
+        /// <see cref="Died"/>, so listeners never get both for the same blow.
+        /// </summary>
+        public event Action Damaged;
+
         public int Lives { get; private set; }
         public int MaxLives => maxLives;
         public bool IsInvulnerable => _invulnerableFor > 0f;
@@ -91,6 +97,8 @@ namespace SkySteps.Player
                 Died?.Invoke();
                 return true;
             }
+
+            Damaged?.Invoke();
 
             _body.position = _respawnPoint;
             _body.linearVelocity = Vector2.zero;
