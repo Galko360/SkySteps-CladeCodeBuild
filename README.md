@@ -9,11 +9,12 @@ nothing was created or edited manually in the Editor.
 ![Low in the sky](Docs/Screenshots/tiles_low.png)
 ![Near the summit, in the starfield](Docs/Screenshots/tiles_high.png)
 ![Slimes on patrol](Docs/Screenshots/slimes.png)
+![The tutorial's enemy page](Docs/Screenshots/tutorial_4_enemies.png)
 
 ## How to play
 
 Climb from the ground to the gold goal at the top of the sky. The game opens on a title screen;
-press **Play** to start.
+press **Play** to start, or **Tutorial** to read how it works.
 
 | Action | Keyboard | Gamepad |
 |---|---|---|
@@ -32,7 +33,9 @@ press **Play** to start.
 - **Lives:** 3. Lose them all and it's **Game Over**.
 - **Timer:** runs until you reach the goal. The result screen shows coins, score and time, with a
   **Restart** button.
-- **Pause** at any time for Resume, Restart or Quit to Title. The timer stops while paused.
+- **How to Play** is on the title screen and in the pause menu: four pages on the goal, the
+  controls, the platforms and the enemies, each with a looping animation of the real game art.
+- **Pause** at any time for Resume, Restart, How to Play or Quit to Title. The timer stops while paused.
 - The pale **plank** platforms can be jumped up through and dropped down through; **stone** ones
   are solid.
 
@@ -46,7 +49,7 @@ press **Play** to start.
 | Challenge / lose condition | Spikes, patrolling slimes, 3 lives, **"Game Over"** — `Hazard`, `StompableEnemy`, `PlayerHealth` |
 | At least 3 interactive objects | Coins, spikes, slimes, one-way platforms, the goal |
 | At least 3 AI-generated assets | Over 30 — see below |
-| Basic UI | Title screen; pause menu; lives, coins, score and timer HUD; minimap; result popup |
+| Basic UI | Title screen; illustrated tutorial; pause menu; lives, coins, score and timer HUD; minimap; result popup |
 | Score, lives, time or other metric | All three: score, lives and a run timer |
 | Restart | Restart on the result popup or the pause menu reloads the level |
 | Short video | Submitted separately |
@@ -98,7 +101,7 @@ Scripts are grouped by responsibility under `Assets/Scripts`:
 | `Level/` | `Coin`, `Hazard`, `LevelGoal`, `ScoreSystem`, `LevelTimer` |
 | `Camera/` | `CameraFollow2D`, `CameraBounds`, `ParallaxLayer`, `DamageCameraShake` |
 | `Effects/` | `FootDustEmitter` (dust on takeoff and landing), `CoinSparkleEmitter`, `StompPuffEmitter`, `PlayerDamageFlash` |
-| `UI/` | `TitleScreenMenu`, `PauseMenu` (freezes time, mutes audio, halts player input), `SceneLoader` (every scene change, resetting pause state), `ResultScreen`, `ScoreHud`, `LivesHud`, `TimerHud`, `Minimap`, `MinimapMarker` |
+| `UI/` | `TutorialPageSwitcher` (paged how-to-play) and its four demo loops (`TutorialClimbGoalDemo`, `TutorialRunJumpDemo`, `TutorialDropThroughDemo`, `TutorialStompDemo`), `TitleScreenMenu`, `PauseMenu` (freezes time, mutes audio, halts player input), `SceneLoader` (every scene change, resetting pause state), `ResultScreen`, `ScoreHud`, `LivesHud`, `TimerHud`, `Minimap`, `MinimapMarker` |
 | `Audio/` | `SoundEffectPlayer`, `AltitudeMusicMixer` (fades the space layer in with height) |
 
 Design choices:

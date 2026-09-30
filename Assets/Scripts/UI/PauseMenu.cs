@@ -20,7 +20,12 @@ namespace SkySteps.UI
         [SerializeField] private GameObject panel;
         [SerializeField] private Button resumeButton;
         [SerializeField] private Button restartButton;
+        [SerializeField] private Button tutorialButton;
         [SerializeField] private Button quitToTitleButton;
+
+        [Header("Tutorial")]
+        [Tooltip("Opened over the pause panel. The game stays paused while it is up.")]
+        [SerializeField] private TutorialPageSwitcher tutorial;
 
         [Header("Level")]
         [Tooltip("Pausing is blocked while this popup is up; it already freezes the game.")]
@@ -51,10 +56,13 @@ namespace SkySteps.UI
             resumeButton.onClick.AddListener(Resume);
             restartButton.onClick.AddListener(SceneLoader.ReloadCurrent);
             quitToTitleButton.onClick.AddListener(QuitToTitle);
+            if (tutorialButton != null) tutorialButton.onClick.AddListener(OpenTutorial);
         }
 
         private void OnEnable()
         {
+            if (tutorial != null) tutorial.Closed += OnTutorialClosed;
+
             // Same rule as the player's input: only switch on what is off, never the whole map.
             _enabledPause = _pause != null && !_pause.enabled;
             if (_enabledPause) _pause.Enable();
@@ -62,6 +70,7 @@ namespace SkySteps.UI
 
         private void OnDisable()
         {
+            if (tutorial != null) tutorial.Closed -= OnTutorialClosed;
             if (_enabledPause) _pause.Disable();
             _enabledPause = false;
         }
@@ -71,14 +80,40 @@ namespace SkySteps.UI
             if (resumeButton != null) resumeButton.onClick.RemoveListener(Resume);
             if (restartButton != null) restartButton.onClick.RemoveListener(SceneLoader.ReloadCurrent);
             if (quitToTitleButton != null) quitToTitleButton.onClick.RemoveListener(QuitToTitle);
+            if (tutorialButton != null) tutorialButton.onClick.RemoveListener(OpenTutorial);
         }
 
         private void Update()
         {
             if (!_pause.WasPressedThisFrame()) return;
 
+            // While the tutorial is up the key only backs out of it, and never reaches the pause state.
+            if (tutorial != null && tutorial.IsOpen)
+            {
+                tutorial.Close();
+                return;
+            }
+
             if (IsPaused) Resume();
             else Pause();
+        }
+
+        private void OpenTutorial()
+        {
+            if (tutorial == null) return;
+
+            // The pause panel steps aside so the tutorial has the screen; the game stays frozen.
+            panel.SetActive(false);
+            tutorial.Open();
+        }
+
+        private void OnTutorialClosed()
+        {
+            if (!IsPaused) return;
+
+            panel.SetActive(true);
+            if (EventSystem.current != null && tutorialButton != null)
+                EventSystem.current.SetSelectedGameObject(tutorialButton.gameObject);
         }
 
         public void Pause()
