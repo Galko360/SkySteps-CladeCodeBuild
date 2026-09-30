@@ -15,12 +15,16 @@ namespace SkySteps.Player
         [SerializeField] private Rigidbody2D body;
         [SerializeField] private SpriteRenderer spriteRenderer;
 
+        [Tooltip("Optional. Only needed so an air jump can play its own animation.")]
+        [SerializeField] private PlayerController playerController;
+
         [Tooltip("Horizontal speed above which the character counts as running rather than standing.")]
         [SerializeField, Min(0f)] private float runThreshold = 0.3f;
 
         private static readonly int SpeedId = Animator.StringToHash("Speed");
         private static readonly int GroundedId = Animator.StringToHash("Grounded");
         private static readonly int VerticalSpeedId = Animator.StringToHash("VerticalSpeed");
+        private static readonly int AirJumpId = Animator.StringToHash("AirJump");
 
         private Animator _animator;
 
@@ -33,6 +37,22 @@ namespace SkySteps.Player
                 Debug.LogError($"{nameof(PlayerAnimator)}: probe, body and sprite renderer must all be assigned.", this);
                 enabled = false;
             }
+        }
+
+        private void OnEnable()
+        {
+            if (playerController != null) playerController.Jumped += OnJumped;
+        }
+
+        private void OnDisable()
+        {
+            if (playerController != null) playerController.Jumped -= OnJumped;
+        }
+
+        // Only a mid-air jump gets its own animation; a jump from the ground is the ordinary one.
+        private void OnJumped(JumpKind kind)
+        {
+            if (kind == JumpKind.Air) _animator.SetTrigger(AirJumpId);
         }
 
         private void Update()

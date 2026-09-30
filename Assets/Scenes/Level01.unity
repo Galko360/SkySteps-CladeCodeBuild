@@ -15541,7 +15541,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1.6}
+    oldSize: {x: 1.2, y: 1.6}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -15682,6 +15682,7 @@ MonoBehaviour:
   contactProbe: {fileID: 1624995789}
   body: {fileID: 1624995792}
   spriteRenderer: {fileID: 1624995793}
+  playerController: {fileID: 1624995786}
   runThreshold: 0.3
 --- !u!95 &1624995797
 Animator:

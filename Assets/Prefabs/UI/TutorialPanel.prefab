@@ -3937,7 +3937,7 @@ MonoBehaviour:
   slimeImage: {fileID: 1786129939275427668}
   scorePop: {fileID: 2473679589986017538}
   scoreLabel: {fileID: 3705630421040854114}
-  fallSprite: {fileID: 21300000, guid: f4f1c3b5d5d6d204ab224f4e35a55247, type: 3}
+  fallSprite: {fileID: 21300000, guid: 99e2b69f0c868c04797df746d8c3583e, type: 3}
   jumpSprite: {fileID: 21300000, guid: 982e1902271b2134d9494e209f983a33, type: 3}
   slimeFrames:
   - {fileID: 21300000, guid: 012d6dd3fcc21d24ebd9793e619c02ba, type: 3}

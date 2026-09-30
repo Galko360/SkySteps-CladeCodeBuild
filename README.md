@@ -20,7 +20,7 @@ press **Play** to start, or **Tutorial** to read how it works.
 |---|---|---|
 | Move | A / D or ← / → | Left stick or D-pad |
 | Jump | Space | South button (A) |
-| Double jump | Jump again in mid-air | Jump again in mid-air |
+| Double jump | Jump again in mid-air — the character front-flips, so you can see it happen | Jump again in mid-air |
 | Drop through a platform | Hold S or ↓, then Jump | Hold down, then Jump |
 | Pause | Esc | Start |
 | Menu buttons | Mouse, or ↑ / ↓ and Enter | D-pad and South button (A) |
@@ -78,7 +78,7 @@ model was used, and nothing was drawn or recorded by hand.
 
 | Asset | How it was made |
 |---|---|
-| **Player animation** — 17 frames: idle ×4, run ×8, jump ×2, land ×3 | A posable skeleton (head, torso, arms with elbows, legs with knees) rendered to 40×64 pixel art. Each frame is the same body in a different pose, so all frames stay consistent. |
+| **Player animation** — 24 frames: idle ×4, run ×8, jump ×2, double-jump flip ×5, fall ×2, land ×3 | A posable skeleton (head, torso, arms with elbows, legs with knees) rendered to pixel art. Far-side limbs are drawn first in darker tones so they read as being behind the body, every shape gets a tinted outline, and three-tone shading picks out knees and sleeves. Each frame is the same body in a different pose, so all frames stay consistent. |
 | **Sky backdrop** | Procedural gradient from hazy horizon to deep space, with clouds, a star field that thickens with height, and ordered dithering |
 | **Platform tiles** — stone and plank | Procedural tiles with lit edges, joints and speckle, repeated across each platform |
 | **Slime enemy** — 5 frames: hop ×4, squashed ×1 | A shaded, outlined dome whose proportions change per frame (settle, squash, stretch in the air, land), with a face drawn on top |
@@ -88,7 +88,7 @@ model was used, and nothing was drawn or recorded by hand.
 | **8 sound effects** | Synthesised chiptune: jump, air jump, land, coin, stomp, hurt, win, game over |
 | **Background music** — 2 layers | A 16-bar loop in F major composed as data and synthesised. The second layer fades in as you climb, so the music moves from sky to space with the visuals. |
 
-![All 17 animation frames](Docs/Screenshots/character_frames.png)
+![All 24 animation frames](Docs/Screenshots/character_frames.png)
 
 ## How it works
 
