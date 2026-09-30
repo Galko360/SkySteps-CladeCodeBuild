@@ -26,6 +26,10 @@ namespace SkySteps.Enemies
         [Tooltip("Upward speed below which the player counts as coming down onto the enemy.")]
         [SerializeField] private float maxStompVerticalSpeed = 0.5f;
 
+        [Tooltip("How far below the enemy's top the player's feet may already be and still count as " +
+                 "landing on it, which covers clipping a corner.")]
+        [SerializeField, Min(0f)] private float stompReach = 0.12f;
+
         private Collider2D _collider;
         private bool _defeated;
 
@@ -75,11 +79,19 @@ namespace SkySteps.Enemies
 
         // A stomp is the player coming down with their feet above the enemy's middle. Anything else,
         // walking into it or jumping up into it, is a hit.
+        // A stomp is the player coming down onto the enemy from above. Testing only where the player
+        // is right now fails: falling at full speed covers more ground in one physics step than the
+        // enemy is tall, so by the first frame they overlap, their feet are already past its middle.
+        // Checking where the feet were a step earlier reads a fast landing, and a clipped corner, the
+        // same way it reads a gentle one.
         private bool IsStomp(Collider2D player)
         {
-            bool descending = _knownBody == null || _knownBody.linearVelocity.y <= maxStompVerticalSpeed;
-            bool feetAbove = player.bounds.min.y >= _collider.bounds.center.y;
-            return descending && feetAbove;
+            float verticalSpeed = _knownBody != null ? _knownBody.linearVelocity.y : 0f;
+            if (verticalSpeed > maxStompVerticalSpeed) return false;
+
+            float feet = player.bounds.min.y;
+            float previousFeet = feet - Mathf.Min(0f, verticalSpeed) * Time.fixedDeltaTime;
+            return previousFeet >= _collider.bounds.max.y - stompReach;
         }
 
         private void Squash()
